@@ -5,14 +5,18 @@ require_once '../helper/session.php';
 require_once '../helper/bdd.php';           
 require_once '../helper/response.php';       
 require_once '../helper/form_helper.php';  
-require_once '../helper/logger.php';      
+require_once '../helper/logger.php'; 
+require_once '../helper/debug.php';     
 
 notice('Accès à la page connexion');
 
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
-
+    //Test
+    // var_dump($_POST);
+    // exit();
+    //dd($_POST);
     $username = request('username');  
     $password = request('password');   
     $token = request('token');      

@@ -15,7 +15,7 @@ $sort = query('sort', "asc"); // récupère la valeur du paramètre 'sort' → '
 
 // Pagination
 $page = query('page', 1); // récupère la valeur du paramètre 'page', par defaut 'page' → '1' // Page actuelle
-$results_per_page = 3; // Nombre de résultats par page. Pour l'insatant je chois d'affichier 3 livres par page
+$results_per_page = 4; // Nombre de résultats par page. Pour l'insatant je chois d'affichier 3 livres par page
 $offset = ($page - 1) * $results_per_page; // Offset pour la pagination // $offset = (1-1) * 3 = 0 . $offset = (2-1) * 3 = 3
 
 // Établir une connexion à la base de données
@@ -125,6 +125,11 @@ require '../header.php';
                 <a class="page-link" href="<?php echo $_SERVER['PHP_SELF']; ?>?<?php echo http_build_query(array_merge($_GET, ['page' => $i])); ?>"><?php echo $i; ?></a>
             </li>
         <?php endfor; ?>
+        <li class="page-item <?php if ($page >= $total_pages) echo 'disabled'; ?>">
+            <a class="page-link" href="<?php echo $_SERVER['PHP_SELF']; ?>?<?php echo http_build_query(array_merge($_GET, ['page' => $page + 1])); ?>">Suivant</a>
+        </li>
     </ul>
 </nav>
+
+<?php require '../footer.php' ?>
 
